@@ -3,27 +3,32 @@
 cpl = gcc
 flags = -Wall -Ofast
 
+src = ./src/
+dest = ./obj/
+
+common = $(dest)array_utilities.o
+
 array:
-	$(cpl) -c array_utilities.c $(flags)
+	$(cpl) -c $(src)array_utilities.c -o $(common) $(flags)
 
 bogo:
-	$(cpl) bogo.c array_utilities.o -o bogo.o $(flags)
+	$(cpl) $(src)bogo.c $(common) -o $(dest)bogo.o $(flags)
 
 bubble:
-	$(cpl) bubble.c array_utilities.o -o bubble.o $(flags)
+	$(cpl) $(src)bubble.c $(common) -o $(dest)bubble.o $(flags)
 
 counting:
-	$(cpl) counting.c array_utilities.o -o counting.o $(flags)
+	$(cpl) $(src)counting.c $(common) -o $(dest)counting.o $(flags)
 
 merge:
-	$(cpl) merge.c array_utilities.o -o merge.o $(flags)
+	$(cpl) $(src)merge.c $(common) -o $(dest)merge.o $(flags)
 
 radix_2:
-	$(cpl) radix_2.c array_utilities.o -o radix_2.o $(flags)
+	$(cpl) $(src)radix_2.c $(common) -o $(dest)radix_2.o $(flags)
 
 radix_10:
-	$(cpl) radix_10.c array_utilities.o -o radix_10.o $(flags)
+	$(cpl) $(src)radix_10.c $(common) -o $(dest)radix_10.o $(flags)
 
 selection:
-	$(cpl) selection.c array_utilities.o -o selection.o $(flags)
+	$(cpl) $(src)selection.c $(common) -o $(dest)selection.o $(flags)
 

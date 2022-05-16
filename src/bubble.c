@@ -1,4 +1,4 @@
-#include "array_utilities.h"
+#include "../hdr/array_utilities.h"
 
 void bubble(int *array){
     int swapped = 1;

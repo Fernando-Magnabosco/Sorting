@@ -1,5 +1,4 @@
-#include "array_utilities.h"
-
+#include "../hdr/array_utilities.h"
 
 void bogoSort(int *array){
 

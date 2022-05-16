@@ -1,4 +1,4 @@
-#include "array_utilities.h"
+#include "../hdr/array_utilities.h"
 
 void merge(int *array, int start, int half, int end)
 {
