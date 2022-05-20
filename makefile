@@ -23,6 +23,10 @@ counting:
 merge:
 	$(cpl) $(src)merge.c $(common) -o $(dest)merge.o $(flags)
 
+merge_t:
+
+	$(cpl) $(src)merge_t.c $(common) -o $(dest)merge_t.o $(flags) -lpthread
+
 radix_2:
 	$(cpl) $(src)radix_2.c $(common) -o $(dest)radix_2.o $(flags)
 

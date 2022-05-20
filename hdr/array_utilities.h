@@ -1,7 +1,7 @@
 #ifndef array_utilities_h
 #define array_utilities_h
 
-#define SIZE 100000
+#define SIZE 1000000
 #define RAND_VALUE 4096
 
 #include <stdio.h>
@@ -18,5 +18,7 @@ int biggestElement(int *array);
 int nDigits(int number);
 int isConsistent(int *before, int *after);
 int *createCopy(int *array);
+
+void merge(int *array, int start, int half, int end);
 
 #endif
