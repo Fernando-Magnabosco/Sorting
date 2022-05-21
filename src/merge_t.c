@@ -1,7 +1,7 @@
 #include <pthread.h>
 #include "../hdr/array_utilities.h"
 
-#define NUM_THREADS 4
+#define NUM_THREADS 5
 
 typedef struct mergeTArgs
 {
@@ -31,6 +31,13 @@ void append(Queue *q, mergeTArgs value)
 {
     pthread_mutex_lock(&q->mutex);
     q->elements[q->end++] = value;
+    pthread_mutex_unlock(&q->mutex);
+}
+
+void lappend(Queue *q, mergeTArgs value)
+{
+    pthread_mutex_lock(&q->mutex);
+    q->elements[--q->start] = value;
     pthread_mutex_unlock(&q->mutex);
 }
 
@@ -98,12 +105,12 @@ void mergeT(int *array)
         if (args[0].end > args[1].end)
         {
             merge(array, args[1].start, args[1].end, args[0].end);
-            append(q, (mergeTArgs){array, args[1].start, args[0].end});
+            lappend(q, (mergeTArgs){array, args[1].start, args[0].end});
         }
         else
         {
             merge(array, args[0].start, args[0].end, args[1].end);
-            append(q, (mergeTArgs){array, args[0].start, args[1].end});
+            lappend(q, (mergeTArgs){array, args[0].start, args[1].end});
         }
     }
 
