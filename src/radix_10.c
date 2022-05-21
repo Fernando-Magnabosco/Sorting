@@ -1,6 +1,6 @@
 #include "../hdr/array_utilities.h"
 
-void radixSort(int *array)
+void radix_10(int *array)
 {
 
     int max = biggestElement(array);
@@ -36,10 +36,7 @@ int main(int argc, char const *argv[])
     int *array = malloc(SIZE * sizeof(int));
     fillArrayRandomly(array);
 
-    clock_t start = clock();
-    radixSort(array);
-
-    printf("%.0lfms\n", (double)(clock() - start) * 1000 / CLOCKS_PER_SEC);
+    printf("%.0lfms\n", timeElapsed(radix_10, array));
     printf("%d\n", isSorted(array));
 
     return 0;

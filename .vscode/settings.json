@@ -1,7 +1,0 @@
-{
-    "makefile.extensionOutputFolder": "./.vscode",
-    "files.associations": {
-        "*.c": "c",
-        "array_utilities.h": "c"
-    }
-}

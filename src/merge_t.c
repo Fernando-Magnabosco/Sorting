@@ -1,7 +1,7 @@
 #include <pthread.h>
 #include "../hdr/array_utilities.h"
 
-#define NUM_THREADS 5
+#define NUM_THREADS 4
 
 typedef struct mergeTArgs
 {
@@ -84,6 +84,7 @@ void mergeT(int *array)
 
     for (int i = 0; i < NUM_THREADS; i++)
     {
+
         mergeTArgs *args = malloc(sizeof(mergeTArgs));
         args->array = array;
         args->start = (i * SIZE) / NUM_THREADS;
@@ -122,13 +123,12 @@ int main(int argc, char const *argv[])
 
     srand(time(NULL));
     int array[SIZE];
-    fillArrayRandomly(array);
 
-    clock_t start = clock();
+    fillArrayRandomly(array);
 
     mergeT(array);
 
-    printf("%.0lfms\n", (double)(clock() - start) * 1000 / CLOCKS_PER_SEC);
+    printf("%.0lfms\n", timeElapsed(mergeT, array));
     printf("%d\n", isSorted(array));
 
     return 0;

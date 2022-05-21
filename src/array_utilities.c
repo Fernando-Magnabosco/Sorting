@@ -85,6 +85,13 @@ int isConsistent(int *before, int *after)
     return 1;
 }
 
+double timeElapsed(sorting_method method, int *array)
+{
+    clock_t start = clock();
+    method(array);
+    return (double)(clock() - start) * 1000 / CLOCKS_PER_SEC;
+}
+
 void merge(int *array, int start, int half, int end)
 {
 

@@ -22,7 +22,8 @@ int main(int argc, char const *argv[])
 
     int array[SIZE];
     fillArrayRandomly(array);
-    selection(array);
+
+    printf("%.0lfms\n", timeElapsed(selection, array));
     printf("%d\n", isSorted(array));
 
     return 0;

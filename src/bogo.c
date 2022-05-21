@@ -1,28 +1,26 @@
 #include "../hdr/array_utilities.h"
 
-void bogoSort(int *array){
+void bogo(int *array)
+{
 
-    while (!isSorted(array)){
-        for(int i = 0; i < SIZE; i++){
+    while (!isSorted(array))
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
 
-            swap(&array[i], &array[rand()%(SIZE)]);
+            swap(&array[i], &array[rand() % (SIZE)]);
         }
     }
-
 }
-
-
 
 int main(int argc, char const *argv[])
 {
     srand(time(NULL));
-    int *array = malloc(sizeof(int)*SIZE);
+    int *array = malloc(sizeof(int) * SIZE);
     fillArrayRandomly(array);
-    time_t start, end;
-    start = clock();
-    bogoSort(array);
-    end = clock();
-    printf("%.0fms\n", (double)(end - start)*1000/CLOCKS_PER_SEC);
+
+    printf("%.0lfms\n", timeElapsed(bogo, array));
+
     printArray(array);
     return 0;
 }
