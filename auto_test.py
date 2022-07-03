@@ -27,11 +27,12 @@ for i in range(num):
     sum += int(data)
 
 mean = sum/num
-variancy = 0
+variancy = 0.0
 
 for xi in times:
     variancy += (xi - mean) ** 2
 
 variancy = variancy/num
 
-print(f"Mean: {mean}\nSD: {variancy ** (1/2)}")
+
+print(f"Mean: {mean}ms\nSD: {variancy ** (1/2)}ms")

@@ -20,11 +20,13 @@ bubble:
 counting:
 	$(cpl) $(src)counting.c $(common) -o $(dest)counting.o $(flags)
 
+heap:
+	$(cpl) $(src)heap.c $(common) -o $(dest)heap.o $(flags)
+
 merge:
 	$(cpl) $(src)merge.c $(common) -o $(dest)merge.o $(flags)
 
 merge_t:
-
 	$(cpl) $(src)merge_t.c $(common) -o $(dest)merge_t.o $(flags) -lpthread
 
 radix_2:

@@ -10,7 +10,7 @@ Then,
 
 to compile the sorting algorithm
 
-You can change the size of the array by changing the value of macro SIZE at **hdr/array_utilities.h**
+You can change the size of the array by changing the value of macro SIZE at **hdr/array_utilities.h** (necessary a make array after)
 
 You can test the sorting algorithm by running the following command:
 
