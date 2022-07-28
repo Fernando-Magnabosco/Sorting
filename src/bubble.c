@@ -1,4 +1,4 @@
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 void bubble(int *array)
 {
@@ -17,16 +17,4 @@ void bubble(int *array)
             }
         }
     }
-}
-
-int main(int argc, char const *argv[])
-{
-
-    int array[SIZE];
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(bubble, array));
-    printf("%d\n", isSorted(array));
-    printArray(array);
-    return 0;
 }

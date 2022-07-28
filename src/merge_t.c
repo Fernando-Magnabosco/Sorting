@@ -1,5 +1,5 @@
 #include <pthread.h>
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 #define NUM_THREADS 2
 
@@ -68,12 +68,12 @@ void *merge_t_sroutine(void *arg)
     merge_t_sroutine((void *)&(mergeTArgs){args->array, args->start, half});
     merge_t_sroutine((void *)&(mergeTArgs){args->array, half + 1, args->end});
 
-    merge(args->array, args->start, half, args->end);
+    merge_sub_routine(args->array, args->start, half, args->end);
 
     return NULL;
 }
 
-void mergeT(int *array)
+void merge_t(int *array)
 {
 
     if (NUM_THREADS <= 0)
@@ -105,12 +105,12 @@ void mergeT(int *array)
 
         if (args[0].end > args[1].end)
         {
-            merge(array, args[1].start, args[1].end, args[0].end);
+            merge_sub_routine(array, args[1].start, args[1].end, args[0].end);
             lappend(q, (mergeTArgs){array, args[1].start, args[0].end});
         }
         else
         {
-            merge(array, args[0].start, args[0].end, args[1].end);
+            merge_sub_routine(array, args[0].start, args[0].end, args[1].end);
             lappend(q, (mergeTArgs){array, args[0].start, args[1].end});
         }
     }
@@ -118,16 +118,3 @@ void mergeT(int *array)
     free(q);
 }
 
-int main(int argc, char const *argv[])
-{
-
-    srand(time(NULL));
-    int array[SIZE];
-
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(mergeT, array));
-    printf("%d\n", isSorted(array));
-
-    return 0;
-}

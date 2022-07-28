@@ -92,7 +92,7 @@ double timeElapsed(sorting_method method, int *array)
     return (double)(clock() - start) * 1000 / CLOCKS_PER_SEC;
 }
 
-void merge(int *array, int start, int half, int end)
+void merge_sub_routine(int *array, int start, int half, int end)
 {
 
     int aux[end - start];

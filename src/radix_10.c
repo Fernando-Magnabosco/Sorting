@@ -1,4 +1,4 @@
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 void radix_10(int *array)
 {
@@ -29,15 +29,3 @@ void radix_10(int *array)
     }
 }
 
-int main(int argc, char const *argv[])
-{
-
-    srand(time(NULL));
-    int *array = malloc(SIZE * sizeof(int));
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(radix_10, array));
-    printf("%d\n", isSorted(array));
-
-    return 0;
-}

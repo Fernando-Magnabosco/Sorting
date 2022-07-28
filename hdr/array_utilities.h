@@ -23,6 +23,6 @@ int *createCopy(int *array);
 
 double timeElapsed(sorting_method method, int *array);
 
-void merge(int *array, int start, int half, int end);
+void merge_sub_routine(int *array, int start, int half, int end);
 
 #endif

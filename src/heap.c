@@ -1,4 +1,4 @@
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 void heapify(int *array, int root, int n)
 {
@@ -33,15 +33,3 @@ void heap(int *array)
     }
 }
 
-int main(int argc, char const *argv[])
-{
-    srand(time(NULL));
-    int array[SIZE];
-
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(heap, array));
-    printf("%d\n", isSorted(array));
-
-    return 0;
-}

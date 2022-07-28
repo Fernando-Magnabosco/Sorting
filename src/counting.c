@@ -1,4 +1,4 @@
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 void counting(int *array)
 {
@@ -27,14 +27,3 @@ void counting(int *array)
     }
 }
 
-int main(int argc, char const *argv[])
-{
-    srand(time(NULL));
-
-    int array[SIZE];
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(counting, array));
-    printf("%d\n", isSorted(array));
-    return 0;
-}

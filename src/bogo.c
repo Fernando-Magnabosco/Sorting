@@ -1,4 +1,4 @@
-#include "../hdr/array_utilities.h"
+#include "../hdr/algorithms.h"
 
 void bogo(int *array)
 {
@@ -13,14 +13,3 @@ void bogo(int *array)
     }
 }
 
-int main(int argc, char const *argv[])
-{
-    srand(time(NULL));
-    int *array = malloc(sizeof(int) * SIZE);
-    fillArrayRandomly(array);
-
-    printf("%.0lfms\n", timeElapsed(bogo, array));
-
-    printArray(array);
-    return 0;
-}
