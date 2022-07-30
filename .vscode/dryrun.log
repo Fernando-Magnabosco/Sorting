@@ -1,5 +1,5 @@
-make bogo --dry-run --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/nando/Desktop/Nando/Testes/Sorting'
-gcc ./src/bogo.c ./obj/array_utilities.o -o ./obj/bogo.o -Wall -Ofast
+gcc -c ./src/array_utilities.c -o ./obj/array_utilities.o -Wall -Ofast
 make: Leaving directory '/home/nando/Desktop/Nando/Testes/Sorting'
  

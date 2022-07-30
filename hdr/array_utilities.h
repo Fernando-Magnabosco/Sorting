@@ -1,7 +1,7 @@
 #ifndef array_utilities_h
 #define array_utilities_h
 
-#define SIZE 1000000
+#define SIZE 20000
 #define RAND_VALUE 4096
 
 #include <stdio.h>
