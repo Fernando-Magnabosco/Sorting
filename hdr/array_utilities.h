@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define SIZE 50000
+#define SIZE 10000
 #define RAND_VALUE 4096
 
 typedef void(sorting_method)(int *);
@@ -27,5 +27,6 @@ double timeElapsed(sorting_method method, int *array);
 void merge_sub_routine(int *array, int start, int half, int end);
 void _heap(int *array, int start, int end);
 void _selection(int *array, int start, int end);
+void _insertion(int *array, int start, int end);
 
 #endif

@@ -9,10 +9,10 @@
 #define SWITCH_TO_HEAP(l, h) \
     else _heap(array, l, h);
 
-#define SWITCH_TO_SELECTION           \
-    if (high - low < 32)              \
+#define SWITCH_TO_INSERTION           \
+    if (high - low < 18)              \
     {                                 \
-        _selection(array, low, high); \
+        _insertion(array, low, high); \
         return;                       \
     }
 
@@ -28,11 +28,17 @@ int quick_sub_routine(int *array, int low, int high)
 
     while (j >= i)
     {
-        if (array[i] > array[pivot])
-            swap(&array[i], &array[j--]);
-
-        else
+        while (array[i] < array[pivot])
             i++;
+        while (array[j] > array[pivot])
+            j--;
+
+        if (i <= j)
+        {
+            swap(&array[i], &array[j]);
+            i++;
+            j--;
+        }
     }
 
     swap(&array[i], &array[pivot]);
@@ -42,7 +48,7 @@ int quick_sub_routine(int *array, int low, int high)
 void _quick(int *array, int low, int high)
 {
 
-    SWITCH_TO_SELECTION; // comment this line to disable selection optimization
+    SWITCH_TO_INSERTION; // comment this line to disable selection optimization
 
     int pivot = quick_sub_routine(array, low, high);
 

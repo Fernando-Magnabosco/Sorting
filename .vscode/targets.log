@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sat Jul 30 19:26:28 2022
+# Make data base, printed on Sat Jul 30 21:39:08 2022
 
 # Variables
 
@@ -209,6 +209,7 @@ TERM = xterm-256color
 <F = $(notdir $<)
 # default
 SUFFIXES := 
+ 
 # environment
 VSCODE_CLI = 1
 # environment
@@ -256,57 +257,57 @@ quick:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 43):
+#  recipe to execute (from 'makefile', line 32):
 	$(cpl) -c $(src)quick.c -o $(dest)quick.o $(flags)
-	
 
 selection:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 40):
+#  recipe to execute (from 'makefile', line 23):
 	$(cpl) -c $(src)selection.c -o $(dest)selection.o $(flags)
 
 heap:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 26):
+#  recipe to execute (from 'makefile', line 29):
 	$(cpl) -c $(src)heap.c -o $(dest)heap.o $(flags)
 
 counting:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 23):
+#  recipe to execute (from 'makefile', line 40):
 	$(cpl) -c $(src)counting.c -o $(dest)counting.o $(flags)
 
 merge_t:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 32):
+#  recipe to execute (from 'makefile', line 37):
 	$(cpl) -c $(src)merge_t.c -o $(dest)merge_t.o $(flags) -lpthread
+	
 
 merge:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 29):
+#  recipe to execute (from 'makefile', line 34):
 	$(cpl) -c $(src)merge.c -o $(dest)merge.o $(flags)
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 83):
+#  recipe to execute (from 'makefile', line 91):
 	rm -rf ./obj/*.o
 
 radix_10:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 37):
+#  recipe to execute (from 'makefile', line 46):
 	$(cpl) -c $(src)radix_10.c -o $(dest)radix_10.o $(flags)
 
 # Not a target:
@@ -330,7 +331,6 @@ all:
 # < := 
 # automatic
 # + := 
- 
 # automatic
 # % := 
 # automatic
@@ -341,47 +341,56 @@ all:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'makefile', line 65):
+#  recipe to execute (from 'makefile', line 72):
 	make array
 	make bogo
 	make bubble
-	make counting
+	make selection
+	make insertion
 	make heap
+	make quick
 	make merge
 	make merge_t
+	make counting
 	make radix_2
 	make radix_10
-	make selection
-	make quick
 	make sorting_lib
 	clear
 	@echo "All files compiled successfully."
 	
 
+insertion:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 26):
+	$(cpl) -c $(src)insertion.c -o $(dest)insertion.o $(flags)
+
 main:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 62):
+#  recipe to execute (from 'makefile', line 69):
 	$(cpl) -o main.out main.c $(util) $(algs) $(flags)
 
 sorting_lib:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 46):
+#  recipe to execute (from 'makefile', line 52):
 	ar cr $(algs) \
 	$(dest)bogo.o \
 	$(dest)bubble.o \
-	$(dest)counting.o \
+	$(dest)selection.o \
+	$(dest)insertion.o \
 	$(dest)heap.o \
-    $(dest)merge.o \
+	$(dest)quick.o \
+	$(dest)merge.o \
 	$(dest)merge_t.o \
+	$(dest)counting.o \
 	$(dest)radix_2.o \
 	$(dest)radix_10.o \
-	$(dest)selection.o \
-	$(dest)quick.o \
-
+	
 	clear
 	@echo "Sorting library created"
 	
@@ -389,7 +398,7 @@ sorting_lib:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 19:26:15.492005507
+#  Last modified 2022-07-30 21:38:56.465808853
 #  File has been updated.
 #  Successfully updated.
 
@@ -410,7 +419,7 @@ radix_2:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 34):
+#  recipe to execute (from 'makefile', line 43):
 	$(cpl) -c $(src)radix_2.c -o $(dest)radix_2.o $(flags)
 
 bubble:
@@ -421,19 +430,19 @@ bubble:
 	$(cpl) -c $(src)bubble.c -o $(dest)bubble.o $(flags)
 
 # files hash-table stats:
-# Load=18/1024=2%, Rehash=0, Collisions=0/30=0%
+# Load=19/1024=2%, Rehash=0, Collisions=0/31=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 226 B / avg = 7 B
-# current buf: size = 8162 B / used = 226 B / count = 31 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 236 B / avg = 7 B
+# current buf: size = 8162 B / used = 236 B / count = 32 / avg = 7 B
 
-# strcache performance: lookups = 52 / hit rate = 40%
+# strcache performance: lookups = 54 / hit rate = 40%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=0/52=0%
-# Finished Make data base on Sat Jul 30 19:26:28 2022
+# Load=32/8192=0%, Rehash=0, Collisions=0/54=0%
+# Finished Make data base on Sat Jul 30 21:39:08 2022
 
  
