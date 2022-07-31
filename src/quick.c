@@ -1,4 +1,5 @@
 #include "../hdr/algorithms.h"
+#include <math.h>
 
 // OTIMIZATIONS:
 
@@ -6,11 +7,15 @@
     int rvalue = rand() % (high - low) + low; \
     swap(&array[rvalue], &array[high - 1]);
 
-#define SWITCH_TO_HEAP(l, h) \
-    else _heap(array, l, h);
+#define SWITCH_TO_HEAP           \
+    if (max_depth == 0)          \
+    {                            \
+        _heap(array, low, high); \
+        return;                  \
+    }
 
 #define SWITCH_TO_INSERTION           \
-    if (high - low < 18)              \
+    if (high - low < 16)              \
     {                                 \
         _insertion(array, low, high); \
         return;                       \
@@ -45,23 +50,23 @@ int quick_sub_routine(int *array, int low, int high)
     return i;
 }
 
-void _quick(int *array, int low, int high)
+void _quick(int *array, int low, int high, int max_depth)
 {
 
     SWITCH_TO_INSERTION; // comment this line to disable selection optimization
+    SWITCH_TO_HEAP;      // comment this line to disable heap optimization
 
     int pivot = quick_sub_routine(array, low, high);
 
     if (pivot > low)
-        _quick(array, low, pivot);
-    SWITCH_TO_HEAP(low, pivot); // comment this line to disable heap optimization
+        _quick(array, low, pivot, max_depth - 1);
 
     if (high > pivot + 1)
-        _quick(array, pivot + 1, high);
-    SWITCH_TO_HEAP(pivot + 1, high); // comment this line to disable heap optimization
+        _quick(array, pivot + 1, high, max_depth - 1);
 }
 
 void quick(int *array)
 {
-    _quick(array, 0, SIZE);
+
+    _quick(array, 0, SIZE, (int)log2(SIZE));
 }

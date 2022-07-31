@@ -5,7 +5,6 @@ void heapify(int *array, int root, int n)
 
 	int left = root * 2 + 1;
 	int right = root * 2 + 2;
-
 	int bigger = root;
 
 	if (left < n && array[left] > array[root])
@@ -24,13 +23,16 @@ void heapify(int *array, int root, int n)
 void _heap(int *array, int low, int high)
 {
 
-	for (int i = high / 2 - 1; i >= low; i--)
-		heapify(array, i, high);
+	int *aux = array + low;
+	int n = high - low;
 
-	for (int i = high - 1; i >= low + 1; i--)
+	for (int i = (n / 2 - 1); i >= 0; i--)
+		heapify(aux, i, n);
+
+	for (int i = n - 1; i >= 1; i--)
 	{
-		swap(&array[low], &array[i]);
-		heapify(array, low, i);
+		swap(&aux[0], &aux[i]);
+		heapify(aux, 0, i);
 	}
 }
 

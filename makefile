@@ -67,6 +67,7 @@ sorting_lib:
 	
 main:
 	$(cpl) -o main.out main.c $(util) $(algs) $(flags)
+	./main.out
 
 all:
 	make array
