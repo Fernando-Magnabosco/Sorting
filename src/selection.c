@@ -1,19 +1,20 @@
 #include "../hdr/algorithms.h"
 
-void selection(int *array)
+void _selection(int *array, int low, int high)
 {
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = low; i < high; i++)
     {
-
         int min = i;
-        for (int j = i + 1; j < SIZE; j++)
-        {
-
+        for (int j = i + 1; j < high; j++)
             if (array[min] > array[j])
                 min = j;
-        }
         swap(&array[i], &array[min]);
     }
 }
 
+void selection(int *array)
+{
+
+    _selection(array, 0, SIZE);
+}

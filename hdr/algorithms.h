@@ -12,5 +12,6 @@ sorting_method merge;
 sorting_method radix_2;
 sorting_method radix_10;
 sorting_method selection;
+sorting_method quick;
 
 #endif

@@ -4,6 +4,7 @@ void radix_2(int *array)
 {
 
     int digits = nDigits(biggestElement(array));
+
     int aux[SIZE];
 
     for (int i = 0; i < digits; i++)

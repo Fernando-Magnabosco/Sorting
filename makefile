@@ -39,7 +39,9 @@ radix_10:
 selection:
 	$(cpl) -c $(src)selection.c -o $(dest)selection.o $(flags)
 
-
+quick:
+	$(cpl) -c $(src)quick.c -o $(dest)quick.o $(flags)
+	
 sorting_lib:
 	ar cr $(algs) \
 	$(dest)bogo.o \
@@ -51,6 +53,7 @@ sorting_lib:
 	$(dest)radix_2.o \
 	$(dest)radix_10.o \
 	$(dest)selection.o \
+	$(dest)quick.o \
 
 	clear
 	@echo "Sorting library created"
@@ -69,6 +72,7 @@ all:
 	make radix_2
 	make radix_10
 	make selection
+	make quick
 	make sorting_lib
 	clear
 	@echo "All files compiled successfully."

@@ -4,13 +4,13 @@ void radix_10(int *array)
 {
 
     int max = biggestElement(array);
+
     int aux[SIZE];
 
     for (int i = 1; max / i > 0; i *= 10)
     {
 
         int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
         for (int j = 0; j < SIZE; j++)
             count[(array[j] / i) % 10]++;
 
@@ -28,4 +28,3 @@ void radix_10(int *array)
             array[j] = aux[j];
     }
 }
-

@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sat Jul 30 13:25:14 2022
+# Make data base, printed on Sat Jul 30 19:26:28 2022
 
 # Variables
 
@@ -67,7 +68,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.370
+GNOME_TERMINAL_SERVICE = :1.153
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -95,7 +96,7 @@ MAKEFILE_LIST := makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 20606
+VSCODE_PID = 9654
 # environment
 SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS = 0
 # environment
@@ -103,7 +104,7 @@ XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/1993,unix/unix:/tmp/.ICE-unix/1993
+SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/2013,unix/unix:/tmp/.ICE-unix/2013
 # automatic
 *F = $(notdir $*)
 # environment
@@ -127,7 +128,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 2
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/bfaee04b_c9cf_46af_8a8d_7fc202bc3a26
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/7e2d6b88_aef2_4aa9_ae48_11ef4e75a588
 # environment
 MAKELEVEL := 0
 # default
@@ -163,7 +164,7 @@ LOGNAME = nando
 # makefile
 .DEFAULT_GOAL := array
 # environment
-SYSTEMD_EXEC_PID = 2235
+SYSTEMD_EXEC_PID = 2071
 # environment
 HISTCONTROL = ignoredups
 # environment
@@ -181,7 +182,7 @@ which_declare = declare -f
 # environment
 DEBUGINFOD_URLS = https://debuginfod.fedoraproject.org/ 
 # environment
-SSH_AGENT_PID = 1953
+SSH_AGENT_PID = 1973
 # environment
 _ = /usr/bin/make
 # environment
@@ -251,6 +252,14 @@ bogo:
 	$(cpl) -c $(src)bogo.c -o $(dest)bogo.o $(flags)
 	
 
+quick:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 43):
+	$(cpl) -c $(src)quick.c -o $(dest)quick.o $(flags)
+	
+
 selection:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -290,8 +299,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 79):
- 
+#  recipe to execute (from 'makefile', line 83):
 	rm -rf ./obj/*.o
 
 radix_10:
@@ -322,6 +330,7 @@ all:
 # < := 
 # automatic
 # + := 
+ 
 # automatic
 # % := 
 # automatic
@@ -332,7 +341,7 @@ all:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'makefile', line 62):
+#  recipe to execute (from 'makefile', line 65):
 	make array
 	make bogo
 	make bubble
@@ -343,6 +352,7 @@ all:
 	make radix_2
 	make radix_10
 	make selection
+	make quick
 	make sorting_lib
 	clear
 	@echo "All files compiled successfully."
@@ -352,14 +362,14 @@ main:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 59):
+#  recipe to execute (from 'makefile', line 62):
 	$(cpl) -o main.out main.c $(util) $(algs) $(flags)
 
 sorting_lib:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 44):
+#  recipe to execute (from 'makefile', line 46):
 	ar cr $(algs) \
 	$(dest)bogo.o \
 	$(dest)bubble.o \
@@ -370,6 +380,7 @@ sorting_lib:
 	$(dest)radix_2.o \
 	$(dest)radix_10.o \
 	$(dest)selection.o \
+	$(dest)quick.o \
 
 	clear
 	@echo "Sorting library created"
@@ -378,7 +389,7 @@ sorting_lib:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 13:23:23.194166837
+#  Last modified 2022-07-30 19:26:15.492005507
 #  File has been updated.
 #  Successfully updated.
 
@@ -410,19 +421,19 @@ bubble:
 	$(cpl) -c $(src)bubble.c -o $(dest)bubble.o $(flags)
 
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=0/29=0%
+# Load=18/1024=2%, Rehash=0, Collisions=0/30=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 30 / storage = 220 B / avg = 7 B
-# current buf: size = 8162 B / used = 220 B / count = 30 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 226 B / avg = 7 B
+# current buf: size = 8162 B / used = 226 B / count = 31 / avg = 7 B
 
-# strcache performance: lookups = 50 / hit rate = 40%
+# strcache performance: lookups = 52 / hit rate = 40%
 # hash-table stats:
-# Load=30/8192=0%, Rehash=0, Collisions=0/50=0%
-# Finished Make data base on Sat Jul 30 13:25:14 2022
+# Load=31/8192=0%, Rehash=0, Collisions=0/52=0%
+# Finished Make data base on Sat Jul 30 19:26:28 2022
 
  

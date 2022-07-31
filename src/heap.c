@@ -3,33 +3,38 @@
 void heapify(int *array, int root, int n)
 {
 
-    int left = root * 2 + 1;
-    int right = root * 2 + 2;
+	int left = root * 2 + 1;
+	int right = root * 2 + 2;
 
-    int bigger = root;
+	int bigger = root;
 
-    if (left < n && array[left] > array[root])
-        bigger = left;
+	if (left < n && array[left] > array[root])
+		bigger = left;
 
-    if (right < n && array[right] > array[bigger])
-        bigger = right;
+	if (right < n && array[right] > array[bigger])
+		bigger = right;
 
-    if (bigger != root)
-    {
-        swap(&array[root], &array[bigger]);
-        heapify(array, bigger, n);
-    }
+	if (bigger != root)
+	{
+		swap(&array[root], &array[bigger]);
+		heapify(array, bigger, n);
+	}
+}
+
+void _heap(int *array, int low, int high)
+{
+
+	for (int i = high / 2 - 1; i >= low; i--)
+		heapify(array, i, high);
+
+	for (int i = high - 1; i >= low + 1; i--)
+	{
+		swap(&array[low], &array[i]);
+		heapify(array, low, i);
+	}
 }
 
 void heap(int *array)
 {
-    for (int i = SIZE / 2 - 1; i >= 0; i--)
-        heapify(array, i, SIZE);
-
-    for (int i = SIZE - 1; i >= 1; i--)
-    {
-        swap(&array[0], &array[i]);
-        heapify(array, 0, i);
-    }
+	_heap(array, 0, SIZE);
 }
-
